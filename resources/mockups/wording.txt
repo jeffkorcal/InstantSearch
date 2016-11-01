@@ -1,0 +1,29 @@
+---------------------------
+  SIDEBAR FILTERS
+---------------------------
+
+Italian 70
+American 47
+Californian 42
+French 31
+Seafood 29
+Japanese 27
+Indian 19
+
+
+
+---------------------------
+  RESTAURANT INFO
+---------------------------
+
+Anchor and Hope
+1897 reviews
+American & Seafood | SOMA | $31 to $50
+
+Bluestem Brasserie
+1123 reviews
+American | Downtown / Union Square | $31 to $50
+
+Boulevard
+4996 reviews
+American | Financial District / Embarcadero | $31 to $50
