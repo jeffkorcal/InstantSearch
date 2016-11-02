@@ -5,7 +5,8 @@
   "main": "index.html",
   "scripts": {
     "dev": "gulp dev",
-    "server": "gulp server"
+    "server": "gulp server",
+    "script:updateIndex": "node -r dotenv/config scripts/updateIndex.js"
   },
   "author": "Algolia",
   "license": "Algolia",
@@ -14,5 +15,9 @@
     "gulp": "^3.9.1",
     "gulp-less-sourcemap": "^1.4.3",
     "gulp-sass": "^2.3.1"
+  },
+  "dependencies": {
+    "algoliasearch": "^3.19.0",
+    "dotenv": "^2.0.0"
   }
 }
