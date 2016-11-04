@@ -3,21 +3,122 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>Restaurant Locator - by Algolia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Restaurant Locator - by Algolia</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/normalize.css">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/instantsearch.js/1/instantsearch.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
   </head>
   <body>
 
-  <div class="welcome-container">
-    <p>Hello buddy!</p>
-    <p>Welcome to the CSS test</p>
-    <p>That blank page is all yours, let's make it rock!</p>
-  </div>
+  <!-- HTML -->
+    <div class="container">
+      
+      <header>
+          <input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search by name, brand, description..."/>
+      </header>
 
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
+      <main>
+        <div class="left-column">
+          <div id="facets" class="facets"></div>
+        </div>
+
+        <div class="right-column">
+          <div id="stats" class="stats"></div>
+          <div id="hits" class="hits"></div>
+          <div id="pagination" class="pagination"></div>
+        </div>
+      </main>
+
+    </div>
+  <!-- /HTML -->
+
+  <!-- TEMPLATES -->
+    <!-- Hit template -->
+    <script type="text/template" id="hit-template">
+      {{#hits}}
+      <div class="hit">
+        <div class="hit-image">
+          <img src="{{image_url}}" alt="{{name}}">
+        </div>
+        <div class="hit-content">
+          <h2 class="hit-name">{{{name}}}</h2>
+          <p class="hit-sub-content">
+            <span class="hit-stars-count">{{{stars_count}}}</span>
+            <span class="hit-reviews-count">({{{reviews_count}}})</span>
+          </p>
+          <p class="hit-sub-content">
+            <span class="hit-food-type">{{{food_type}}}</span>
+            <span> | </span>
+            <span class="hit-neighborhood">{{{neighborhood}}}</span>
+            <span> | </span>
+            <span class="hit-price-range">{{{price_range}}}</span>
+          </p>
+        </div>
+      </div>
+      {{/hits}}
+    </script>
+
+    <!-- Stats template -->
+    <script type="text/template" id="stats-template">
+      {{ nbHits }} Result{{#nbHits_plural}}s{{/nbHits_plural}} <span class="found-in">Found in {{ processingTimeMS }}ms</span>
+    </script>
+
+    <!-- Facet template -->
+    <script type="text/template" id="facet-template">
+      <div class="facet">
+        <h5>{{ title }}</h5>
+        <ul>
+          {{#values}}
+          <li>
+            <a href="" class="facet-link toggle-refine {{#isRefined}}facet-refined{{/isRefined}}" data-facet="{{ facet }}" data-value="{{ name }}">
+              {{ name }}<span class="facet-count">{{ count }}</span>
+            </a>
+          </li>
+          {{/values}}
+        </ul>
+      </div>
+    </script>
+
+    <!-- Pagination template -->
+    <script type="text/template" id="pagination-template">
+      <ul>
+        <li {{^prev_page}}class="disabled"{{/prev_page}}><a href="#" {{#prev_page}}class="go-to-page" data-page="{{ prev_page }}"{{/prev_page}}>&#60;</a></li>
+        {{#pages}}
+        <li class="{{#current}}active{{/current}} {{#disabled}}disabled{{/disabled}}"><a href="#" {{^disabled}} class="go-to-page" data-page="{{ number }}" {{/disabled}}>{{ number }}</a></li>
+        {{/pages}}
+        <li {{^next_page}}class="disabled"{{/next_page}}><a href="#" {{#next_page}}class="go-to-page" data-page="{{ next_page }}"{{/next_page}}>&#62;</a></li>
+      </ul>
+    </script>
+
+    <!-- No Results template -->
+    <script type="text/template" id="no-results-template">
+      <div id="no-results-message">
+        <p>We didn't find any results for the search <em>"{{ query }}"</em>.</p>
+        <ul>
+          {{#filters}}
+          <li class="{{ class }}" data-facet="{{ facet }}" data-value="{{ facet_value }}">
+            {{ label }}<span class="value">{{ label_value }}</span><a class="remove"><img src="img/remove.svg"/></a>
+          </li>
+          {{/filters}}
+          <br>
+          <a href="" class='clear-all'>Clear all</a>
+        </ul>
+      </div>
+    </script>
+  <!-- /TEMPLATES -->
+
+  <!-- SCRIPTS -->
+    <script src="//cdn.jsdelivr.net/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch/3/algoliasearch.min.js"></script>
+    <script src="//cdn.jsdelivr.net/algoliasearch.helper/2/algoliasearch.helper.min.js"></script>
+    <script src="//cdn.jsdelivr.net/hogan.js/3.0.2/hogan.min.common.js"></script>
     <script src="assets/js/main.js"></script>
+  <!-- /SCRIPTS -->
   </body>
 </html>
+
+<!--     <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script> -->
