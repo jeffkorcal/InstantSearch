@@ -18,7 +18,7 @@
     <div class="container">
       
       <header>
-          <input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search by name, brand, description..."/>
+          <input id="search-input" class="search-input" type="text" autocomplete="off" spellcheck="false" autocorrect="off" placeholder="Search for Restaurants by Name, Cuisine, Location"/>
       </header>
 
       <main>
@@ -48,7 +48,8 @@
           <h2 class="hit-name">{{{name}}}</h2>
           <p class="hit-sub-content">
             <span class="hit-stars-count">{{{stars_count}}}</span>
-            <span class="hit-reviews-count">({{{reviews_count}}})</span>
+            <span class="stars">{{{stars_count}}}</span>
+            <span class="hit-reviews-count">({{{reviews_count}}} reviews)</span>
           </p>
           <p class="hit-sub-content">
             <span class="hit-food-type">{{{food_type}}}</span>
@@ -64,19 +65,18 @@
 
     <!-- Stats template -->
     <script type="text/template" id="stats-template">
-      {{ nbHits }} Result{{#nbHits_plural}}s{{/nbHits_plural}} <span class="found-in">Found in {{ processingTimeMS }}ms</span>
+      {{ nbHits }} result{{#nbHits_plural}}s{{/nbHits_plural}} found<span class="found-in"> in {{ processingTimeS }} seconds</span>
     </script>
 
     <!-- Facet template -->
     <script type="text/template" id="facet-template">
       <div class="facet">
         <h5>{{ title }}</h5>
-        <ul>
+        <ul class="facet-links">
           {{#values}}
-          <li>
-            <a href="" class="facet-link toggle-refine {{#isRefined}}facet-refined{{/isRefined}}" data-facet="{{ facet }}" data-value="{{ name }}">
-              {{ name }}<span class="facet-count">{{ count }}</span>
-            </a>
+          <li class="facet-link toggle-refine {{#isRefined}}facet-refined{{/isRefined}}" data-facet="{{ facet }}" data-value="{{ name }}">
+            {{ name }}
+            <span class="facet-count">{{ count }}</span>
           </li>
           {{/values}}
         </ul>
@@ -120,5 +120,3 @@
   <!-- /SCRIPTS -->
   </body>
 </html>
-
-<!--     <script>window.jQuery || document.write('<script src="assets/js/vendor/jquery-1.11.2.min.js"><\/script>')</script> -->

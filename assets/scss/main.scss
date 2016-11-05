@@ -2,6 +2,8 @@
   Variables
 ***************************************************/
   $background-image: '../../resources/graphics/background.png';
+  $full-star: '../../resources/graphics/star-plain.png';
+  $empty-star: '../../resources/graphics/star-empty.png';
   $main-font: 'Lato', sans-serif;
   $dark-blue: #21698c;
   $light-blue: #3098c3;
@@ -29,11 +31,11 @@
   }
   .left-column {
     float: left;
-    width: 23%;
+    width: 27%;
   }
   .right-column {
-    width: 74%;
-    margin-left: 26%;
+    width: 70%;
+    margin-left: 30%;
   }
 
 /**************************************************
@@ -155,36 +157,34 @@
 /**************************************************
   Facets
 ***************************************************/
-/*  .facet {
-    margin: 0 30px 20px;
+  .facet {
+    margin: 0 5px 30px 10px;
   }
   .facet h5 {
     font-size: 16px;
     margin: 0 0 8px; 
   }
-  .facet-item {
-    padding: 2px;
-    border-radius: 5px;
+  .facet-links {
+    list-style-type: none;
+    margin-left: 0;
+    padding: 0 15px;
     cursor: pointer;
   }
   .facet-link {
-    margin-left: 8px;
-    text-decoration: none;
     color: $dark-grey;
+    border-radius: 5px;
+    padding: 5px;
   }
   .facet-count {
    color: $light-grey;
    position: relative;
-   margin-right: 8px;
    float: right;
-  }*/
-/*  .facet-active {
+  }
+  .facet-refined,
+  .facet-refined .facet-count {
+    color: white;
     background-color: $light-blue;
   } 
-  .facet-active .ais-menu--link, 
-  .facet-active .ais-menu--count {
-    color: white;
-  }*/
 
 /**************************************************
   No Results

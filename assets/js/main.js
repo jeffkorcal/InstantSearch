@@ -10,7 +10,11 @@ Initilization
   var PARAMS = {
     hitsPerPage: 7,
     maxValuesPerFacet: 7,
-    facets: ['food_type']
+    hierarchicalFacets: [{
+        name: 'food_type',
+        attributes: ['food_type'],
+        sortBy: ['count:desc', 'name:asc']
+      }]
   };
   var FACETS_ORDER_OF_DISPLAY = ['food_type'];
   var FACETS_LABELS = {
@@ -61,6 +65,7 @@ Search Binding
 
   // Search results
   algoliaHelper.on('result', function(content, state) {
+    console.log(content);
     renderStats(content);
     renderHits(content);
     renderFacets(content, state);
@@ -79,7 +84,7 @@ Render Functions
     var stats = {
       nbHits: content.nbHits,
       nbHits_plural: content.nbHits !== 1,
-      processingTimeMS: content.processingTimeMS
+      processingTimeS: (content.processingTimeMS/1000)%60
     };
     $stats.html(statsTemplate.render(stats));
   }
@@ -89,25 +94,22 @@ Render Functions
   }
 
   function renderFacets(content, state) {
-    var notRefined = $.isEmptyObject(state.facetsRefinements);
-
-    if (notRefined) {
+    console.log(content);
       var facetsHtml = '';
       for (var facetIndex = 0; facetIndex < FACETS_ORDER_OF_DISPLAY.length; ++facetIndex) {
-        var facetName = 'food_type';
+        var facetName = FACETS_ORDER_OF_DISPLAY[facetIndex];
         var facetResult = content.getFacetByName(facetName);
         var facetContent = {};
         if (facetResult) {
           facetContent = {
             facet: facetName,
             title: FACETS_LABELS[facetName],
-            values: content.getFacetValues(facetName, {sortBy: ['isRefined:desc', 'count:desc', 'name:asc']})
+            values: content.hierarchicalFacets[0].data
           };
           facetsHtml += facetTemplate.render(facetContent);
         }
-      }
+      }  
       $facets.html(facetsHtml);
-    }
   }
 
   function renderPagination(content) {
@@ -180,10 +182,9 @@ No Result Message
 
 /**************************************************
 Event Binding
-***************************************************/  
+// ***************************************************/  
   $(document).on('click', '.toggle-refine', function(e) {
     e.preventDefault();
-    $(this).addClass('active');
     algoliaHelper.toggleRefine($(this).data('facet'), $(this).data('value')).search();
   });
   $(document).on('click', '.go-to-page', function(e) {
