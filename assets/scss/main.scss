@@ -2,13 +2,13 @@
   Variables
 ***************************************************/
   $background-image: '../../resources/graphics/background.png';
-  $full-star: '../../resources/graphics/star-plain.png';
-  $empty-star: '../../resources/graphics/star-empty.png';
+  $stars: '../../resources/graphics/stars-icons-100.png';
   $main-font: 'Lato', sans-serif;
   $dark-blue: #21698c;
   $light-blue: #3098c3;
   $dark-grey: #212121;
   $light-grey: #bdbdbd;
+  $yellow-orange: #fdab6c;
 
 /**************************************************
   Body / Background
@@ -26,16 +26,19 @@
   .container { 
     position: relative; 
     width: 960px; 
-    /*max-width: 90%; */
     margin: 0 auto;
   }
   .left-column {
     float: left;
     width: 27%;
+    padding-top: 40px;
   }
   .right-column {
-    width: 70%;
-    margin-left: 30%;
+    width: 72%;
+    margin-left: 28%;
+    padding-top: 40px;
+    padding-left: 30px;
+    border-left: $light-grey 1px solid;
   }
 
 /**************************************************
@@ -65,9 +68,16 @@
 ***************************************************/
   main {
     position: relative;
-    padding-top: 20px;
     background-color: white;
     overflow: hidden;
+  }
+  .stats {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .found-in {
+    font-size: 14px;
+    font-weight: 300;
   }
   .hits {
     margin: 4px 0;
@@ -102,19 +112,29 @@
     margin: 0 0 2px;
   }
   .hit-sub-content {
-    margin: 0;
+    margin: 8px 0;
+  }
+  .hit-stars-count {
+    vertical-align: top;
+    color: $yellow-orange;
+
+  }
+  .hit-reviews-count {
+    vertical-align: top;
+    margin-left: 8px;
   }
 
 /**************************************************
   Pagination
 ***************************************************/
   .pagination {
-    margin: 60px;
+    padding: 60px 90px 60px 0;
   }
   .pagination ul {
     font-size: 0;
     list-style-type: none;
     text-align: center;
+    padding-left: 0;
   }
   .pagination li {
     font-size: 14px;
@@ -158,38 +178,72 @@
   Facets
 ***************************************************/
   .facet {
-    margin: 0 5px 30px 10px;
+    margin: 0 0 30px 20px;
   }
   .facet h5 {
     font-size: 16px;
-    margin: 0 0 8px; 
+    margin: 0; 
   }
   .facet-links {
     list-style-type: none;
-    margin-left: 0;
-    padding: 0 15px;
+    margin: 10px 0;
+    padding: 0 10px;
     cursor: pointer;
   }
   .facet-link {
+    font-weight: 400;
     color: $dark-grey;
     border-radius: 5px;
     padding: 5px;
   }
   .facet-count {
+    font-weight: 300;
    color: $light-grey;
    position: relative;
    float: right;
   }
   .facet-refined,
   .facet-refined .facet-count {
+    font-weight: 300;
     color: white;
     background-color: $light-blue;
   } 
 
 /**************************************************
+  Stars
+***************************************************/
+  .numeric-facet {
+    @extend .facet;
+  }
+  .numeric-facet h5 {
+    font-size: 16px;
+    margin: 0; 
+  }
+  #stars-ranking {
+    @extend .facet-links;
+    padding-right: 50px;
+  }
+  .rank {
+    margin: 3px 0;
+  }
+  .star-empty {
+    display: inline-block;
+    background: url($stars) no-repeat;
+    width: 100px;
+    height: 18px;
+  }
+
+  .star-full {
+    display: inline-block;
+    background: url($stars) 0 -18px no-repeat;
+    width: 100px;
+    height: 18px;
+  }
+
+/**************************************************
   No Results
 ***************************************************/
-  .no-results #pagination, .no-results #stats, .no-results #facets {
+  .no-results #pagination, .no-results #stats, .no-results #facets, .no-results #numeric-facet {
     display: none;
   }
   #no-results-message {

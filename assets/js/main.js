@@ -35,6 +35,7 @@ DOM Binding
   $stats = $('#stats');
   $facets = $('#facets');
   $pagination = $('#pagination');
+  $stars = $('#stars-ranking');
 
   // Hogan templates binding
   var hitTemplate = Hogan.compile($('#hit-template').text());
@@ -65,10 +66,10 @@ Search Binding
 
   // Search results
   algoliaHelper.on('result', function(content, state) {
-    console.log(content);
     renderStats(content);
     renderHits(content);
     renderFacets(content, state);
+    renderStars();
     renderPagination(content);
     handleNoResults(content);
   });
@@ -76,6 +77,9 @@ Search Binding
   // Initial search
   initFromURLParams();
   algoliaHelper.search();
+
+  // Initial render
+  $('.rank').each(renderStar);
 
 /**************************************************
 Render Functions
@@ -94,22 +98,21 @@ Render Functions
   }
 
   function renderFacets(content, state) {
-    console.log(content);
-      var facetsHtml = '';
-      for (var facetIndex = 0; facetIndex < FACETS_ORDER_OF_DISPLAY.length; ++facetIndex) {
-        var facetName = FACETS_ORDER_OF_DISPLAY[facetIndex];
-        var facetResult = content.getFacetByName(facetName);
-        var facetContent = {};
-        if (facetResult) {
-          facetContent = {
-            facet: facetName,
-            title: FACETS_LABELS[facetName],
-            values: content.hierarchicalFacets[0].data
-          };
-          facetsHtml += facetTemplate.render(facetContent);
-        }
-      }  
-      $facets.html(facetsHtml);
+    var facetsHtml = '';
+    for (var facetIndex = 0; facetIndex < FACETS_ORDER_OF_DISPLAY.length; ++facetIndex) {
+      var facetName = FACETS_ORDER_OF_DISPLAY[facetIndex];
+      var facetResult = content.getFacetByName(facetName);
+      var facetContent = {};
+      if (facetResult) {
+        facetContent = {
+          facet: facetName,
+          title: FACETS_LABELS[facetName],
+          values: content.hierarchicalFacets[0].data
+        };
+        facetsHtml += facetTemplate.render(facetContent);
+      }
+    }  
+    $facets.html(facetsHtml);
   }
 
   function renderPagination(content) {
@@ -132,6 +135,17 @@ Render Functions
       next_page: content.page + 1 < content.nbPages ? content.page + 2 : false
     };
     $pagination.html(paginationTemplate.render(pagination));
+  }
+
+  function renderStars() {
+    $('.stars').each(renderStar);
+  }
+
+  function renderStar() {
+    var val = parseFloat($(this).html());
+    var size = Math.max(0, (Math.min(5, val))) * 20;
+    var $span = $('<span />').addClass('star-full').width(size);
+    $(this).html($span);
   }
 
 /**************************************************
@@ -187,11 +201,30 @@ Event Binding
     e.preventDefault();
     algoliaHelper.toggleRefine($(this).data('facet'), $(this).data('value')).search();
   });
+
+  $(document).on('click', '.rank', function(e) {
+    e.preventDefault();
+    var $refine = $(this);
+    var refineVal = $refine.data('ranking');
+
+    var $active = $stars.find('.rank-active');
+    var activeVal = $active.data('ranking');
+
+    $active.removeClass('rank-active');
+    algoliaHelper.removeNumericRefinement('stars_count', '<=', activeVal).search();
+    
+    if (activeVal !== refineVal) {
+      $refine.addClass('rank-active');
+      algoliaHelper.addNumericRefinement('stars_count', '<=', refineVal).search(); 
+    }
+  });
+
   $(document).on('click', '.go-to-page', function(e) {
     e.preventDefault();
     $('html, body').animate({scrollTop: 0}, '500', 'swing');
     algoliaHelper.setCurrentPage(+$(this).data('page') - 1).search();
   });
+
   $(document).on('click', '.clear-all', function(e) {
     e.preventDefault();
     $searchInput.val('').focus();

@@ -24,6 +24,17 @@
       <main>
         <div class="left-column">
           <div id="facets" class="facets"></div>
+          <div id="numeric-facet" class="numeric-facet">
+            <h5>Ranking</h5>
+            <ul id="stars-ranking">
+              <li class="rank star-empty" data-ranking="0.9">0</li>
+              <li class="rank star-empty" data-ranking="1.9">1</li>
+              <li class="rank star-empty" data-ranking="2.9">2</li>
+              <li class="rank star-empty" data-ranking="3.9">3</li>
+              <li class="rank star-empty" data-ranking="4.9">4</li>
+              <li class="rank star-empty" data-ranking="5">5</li>
+            </ul>
+          </div>
         </div>
 
         <div class="right-column">
@@ -48,7 +59,7 @@
           <h2 class="hit-name">{{{name}}}</h2>
           <p class="hit-sub-content">
             <span class="hit-stars-count">{{{stars_count}}}</span>
-            <span class="stars">{{{stars_count}}}</span>
+            <span class="stars star-empty">{{{stars_count}}}</span>
             <span class="hit-reviews-count">({{{reviews_count}}} reviews)</span>
           </p>
           <p class="hit-sub-content">
