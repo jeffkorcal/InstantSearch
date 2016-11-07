@@ -1,0 +1,332 @@
+/**************************************************
+  Variables
+***************************************************/
+/**************************************************
+  Body / Background
+***************************************************/
+/* line 16, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+body {
+  background: url("../../resources/graphics/background.png");
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
+  color: #212121; }
+
+/**************************************************
+  Grid
+***************************************************/
+/* line 26, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.container {
+  position: relative;
+  width: 960px;
+  margin: 0 auto; }
+
+/* line 31, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.left-column {
+  float: left;
+  width: 27%;
+  padding-top: 40px; }
+
+/* line 36, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.right-column {
+  width: 72%;
+  margin-left: 28%;
+  padding-top: 40px;
+  padding-left: 30px;
+  border-left: #bdbdbd 1px solid; }
+
+/**************************************************
+  Header / Input
+***************************************************/
+/* line 47, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+header {
+  position: relative;
+  height: 100px;
+  margin-top: 40px;
+  background-color: #21698c; }
+
+/* line 53, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.search-input {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  padding: 10px;
+  border: 1px #212121 solid;
+  border-radius: 5px;
+  font-size: 20px;
+  font-weight: 100; }
+
+/**************************************************
+  Main / Hits
+***************************************************/
+/* line 69, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+main {
+  position: relative;
+  background-color: white;
+  overflow: hidden; }
+
+/* line 74, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.stats {
+  font-size: 18px;
+  font-weight: 400; }
+
+/* line 78, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.found-in {
+  font-size: 14px;
+  font-weight: 300; }
+
+/* line 82, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hits {
+  margin: 4px 0;
+  padding: 10px 0;
+  border-top: 2px solid #eee; }
+
+/* line 87, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit {
+  font-size: 0;
+  padding: 8px 0; }
+
+/* line 91, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit-image {
+  display: inline-block;
+  width: 16%; }
+  /* line 94, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+  .hit-image img {
+    max-width: 100%;
+    max-height: 180px;
+    border-radius: 5px;
+    border: 1px #bdbdbd solid; }
+
+/* line 101, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit-content {
+  font-size: 16px;
+  font-weight: 300;
+  color: #bdbdbd;
+  display: inline-block;
+  width: 80%;
+  margin-left: 3%;
+  vertical-align: top; }
+
+/* line 110, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit-name {
+  color: #212121;
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0 0 2px; }
+
+/* line 116, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit-sub-content {
+  margin: 8px 0; }
+
+/* line 119, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit-stars-count {
+  vertical-align: top;
+  color: #fdab6c; }
+
+/* line 124, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.hit-reviews-count {
+  vertical-align: top;
+  margin-left: 8px; }
+
+/**************************************************
+  Pagination
+***************************************************/
+/* line 132, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination {
+  padding: 60px 90px 60px 0; }
+
+/* line 135, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination ul {
+  font-size: 0;
+  list-style-type: none;
+  text-align: center;
+  padding-left: 0; }
+
+/* line 141, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li {
+  font-size: 14px;
+  display: inline; }
+
+/* line 145, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination a {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid #bdbdbd;
+  border-right: none; }
+
+/* line 152, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination a:hover {
+  background: #bdbdbd; }
+
+/* line 155, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li:first-child a {
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px; }
+
+/* line 159, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li:last-child a {
+  border-right: 1px solid #bdbdbd;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px; }
+
+/* line 164, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li.active a {
+  color: white;
+  border-color: #3098c3;
+  background: #3098c3; }
+
+/* line 169, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li.active a:hover {
+  cursor: default; }
+
+/* line 172, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li.disabled a {
+  cursor: not-allowed; }
+
+/* line 175, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.pagination li.disabled a:hover {
+  background: none; }
+
+/**************************************************
+  Facets
+***************************************************/
+/* line 182, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.facet, .numeric-facet {
+  margin: 0 0 30px 20px; }
+
+/* line 185, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.facet h5, .numeric-facet h5 {
+  font-size: 16px;
+  margin: 0; }
+
+/* line 189, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.facet-links, #stars-ranking {
+  list-style-type: none;
+  margin: 10px 0;
+  padding: 0 10px;
+  cursor: pointer; }
+
+/* line 195, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.facet-link {
+  font-weight: 400;
+  color: #212121;
+  border-radius: 5px;
+  padding: 5px; }
+
+/* line 201, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.facet-count {
+  font-weight: 300;
+  color: #bdbdbd;
+  position: relative;
+  float: right; }
+
+/* line 207, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.facet-refined,
+.facet-refined .facet-count {
+  font-weight: 300;
+  color: white;
+  background-color: #3098c3; }
+
+/**************************************************
+  Stars
+***************************************************/
+/* line 220, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.numeric-facet h5 {
+  font-size: 16px;
+  margin: 0; }
+
+/* line 224, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#stars-ranking {
+  padding-right: 50px; }
+
+/* line 228, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.rank {
+  margin: 3px 0; }
+
+/* line 231, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.star-empty {
+  display: inline-block;
+  background: url("../../resources/graphics/stars-icons-100.png") no-repeat;
+  width: 100px;
+  height: 18px; }
+
+/* line 238, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.star-full {
+  display: inline-block;
+  background: url("../../resources/graphics/stars-icons-100.png") 0 -18px no-repeat;
+  width: 100px;
+  height: 18px; }
+
+/**************************************************
+  No Results
+***************************************************/
+/* line 248, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+.no-results #pagination,
+.no-results #stats,
+.no-results #facets,
+.no-results #numeric-facet {
+  display: none; }
+
+/* line 254, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message {
+  text-align: center; }
+
+/* line 257, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message p {
+  font-size: 28px;
+  font-weight: 100; }
+
+/* line 261, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message ul {
+  list-style-type: none; }
+
+/* line 264, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message li {
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  margin: 4px 2px;
+  padding: 4px 28px 4px 8px;
+  color: #212121;
+  border: 1px solid #bdbdbd;
+  border-radius: 12px; }
+
+/* line 274, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message li span.value {
+  font-weight: bold;
+  color: #000; }
+
+/* line 278, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message li a.remove img {
+  position: absolute;
+  top: 3px;
+  right: 5px;
+  float: right;
+  width: 17px;
+  height: 17px;
+  opacity: .5; }
+
+/* line 287, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+#no-results-message li a.remove:hover img {
+  opacity: 1; }
+
+/* line 290, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+a.clear-all {
+  font-size: 12px;
+  line-height: 1;
+  display: inline-block;
+  margin: 10px;
+  padding: 8px 12px;
+  text-decoration: none;
+  color: black;
+  border: 2px solid #bdbdbd;
+  border-radius: 4px; }
+
+/* line 301, /Users/Jeff/Desktop/Place2Eat/assets/scss/main.scss */
+a.clear-all:hover {
+  background-color: #3098c3;
+  color: white; }
+
+/*# sourceMappingURL=../../scss */
