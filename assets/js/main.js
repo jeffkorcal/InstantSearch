@@ -17,7 +17,7 @@ Initilization
       }]
   };
   var FACETS_ORDER_OF_DISPLAY = ['food_type'];
-  var FACETS_LABELS = { food_type: 'Cusine / Food Type' };
+  var FACETS_LABELS = { food_type: 'Cuisine / Food Type' };
 
   // Client + Helper initialization
   var algolia = algoliasearch(APPLICATION_ID, SEARCH_ONLY_API_KEY);
